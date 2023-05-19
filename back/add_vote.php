@@ -1,4 +1,4 @@
-<?php include_once "../db.php";?>
+<?php include_once "../db.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,9 +13,9 @@
 <body>
     <div>
         <h1>新增主題</h1>
-<?php
-       
-?>
+        <?php
+
+        ?>
         <form action="../api/add_vote.php" method="post">
             <div><label for="subject">主題說明:</label><input type="text" name="subject" id="subject" class="subject-input"></div>
             <div class="time-set">
@@ -29,16 +29,20 @@
                 </div>
             </div>
             <div><label for="type">單複選</label><input type="radio" name="type" value="1">單選&nbsp;&nbsp;
-            <input type="radio" name="type" value="2">複選</div>
-<hr>
-<div>
-    <label for="description">選項</label>
-    <input type=text name=description[] class="description-input">
-</div>
-<div>
-    <label for="description">選項</label>
-    <input type=text name=description[] class="description-input">
-</div>
+                <input type="radio" name="type" value="2">複選
+            </div>
+            <hr>
+            <div class="options">
+                <div>
+                    <label for="description">選項</label>
+                    <input type=text name=description[] class="description-input">
+                    <spna>+</spna>
+                </div>
+                <div>
+                    <label for="description">選項</label>
+                    <input type=text name=description[] class="description-input">
+                </div>
+            </div>
             <div>
                 <input type="submit" value="新增">
 

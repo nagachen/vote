@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新增主題</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script src=".././js/jquery-3.7.0.min.js"></script>
 </head>
 
 <body>
@@ -36,7 +37,8 @@
                 <div>
                     <label for="description">選項</label>
                     <input type=text name=description[] class="description-input">
-                    <spna>+</spna>
+                    <spna onclick='addOption()'>+</spna>
+                    <spna onclick='removeOption(this)'>-</spna>
                 </div>
                 <div>
                     <label for="description">選項</label>
@@ -44,7 +46,7 @@
                 </div>
             </div>
             <div>
-                <input type="submit" value="新增">
+                <input type="submit" value="編輯">
 
             </div>
         </form>
@@ -52,3 +54,18 @@
 </body>
 
 </html>
+<script>
+    function addOption(){
+        let opt=`<div>
+                    <label for="description">選項</label>
+                    <input type=text name=description[] class="description-input">
+                    <spna onclick='addOption()'>+</spna>
+                    <spna onclick='removeOption(this)'>-</spna>
+                </div>`
+        $(".options").append(opt);
+    }
+    function removeOption(el){ 
+        $(el).parent().remove();  //span的上一層div
+    }
+
+</script>

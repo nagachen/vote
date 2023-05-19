@@ -18,14 +18,22 @@ if($chk>0){
     $sql="insert into `topics`(`subject`,`open_time`,`close_time`,`type`)
  values('{$_POST['subject']}','{$_POST['open_time']}','{$_POST['close_time']}','{$_POST['type']}')";
  $pdo->exec($sql);
-}
-//顯示寫入或沒寫入的id
+ //使用主題相同判斷取得主題id
 $sql_subject_id="select `id` from `topics` where `subject`='{$_POST['subject']}'";
-echo $sql_subject_id;
 $subject_id=$pdo->query($sql_subject_id)->fetchColumn();
+//判斷description所傳來的值是否為空和寫入
+if(!empty($_POST['description'])){
+    foreach($_POST['description'] as $desc){
+        $desc_sql="INSERT INTO `options`( `description`, `subject_id`) 
+                   VALUES ('$desc','$subject_id')";
+        $pdo->exec($desc_sql);
+        header("location:../back/add_vote.php");
+    }
+}
+}
 
-echo $subject_id;
+
  
 
-// header("location:../back/add_vote.php");
+
 ?> 

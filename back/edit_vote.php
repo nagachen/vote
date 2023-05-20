@@ -21,7 +21,7 @@ $options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'
         <?php
 
         ?>
-        <form action="../api/add_vote.php" method="post">
+        <form action="../api/edit_vote.php" method="post">
             <div><label for="subject">主題說明:</label><input type="text" name="subject" id="subject" class="subject-input" value=<?=$topic['subject'];?>></div>
             <div class="time-set">
                 <div class="time-item">
@@ -34,20 +34,22 @@ $options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'
                 </div>
             </div>
             <div><label for="type">單複選</label><input type="radio" name="type" value="1" checked="<?=$topic['type'];?>">單選&nbsp;&nbsp;
-                <input type="radio" name="type" value="2" checked="<?=$topic['type'];?>">複選
+                <input type="radio" name="type" value="2" <?=($topic['type']==2)?'checked':'';?>>複選
             </div>
             <hr>
+            <?php 
+            foreach($options as $opt){
+?>
+          
             <div class="options">
                 <div>
                     <label for="description">選項</label>
-                    <input type=text name=description[] class="description-input">
+                    <input type=text name=description[] class="description-input" value="<?=$opt['description'];?>">
                     <spna onclick='addOption()'>+</spna>
                     <spna onclick='removeOption(this)'>-</spna>
                 </div>
-                <div>
-                    <label for="description">選項</label>
-                    <input type=text name=description[] class="description-input">
-                </div>
+                <input type="hidden" name="opt_id[]" value="<?=$opt['id'];?>">
+<?php  }?>
             </div>
             <div>
                 <input type="submit" value="編輯">

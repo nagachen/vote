@@ -37,19 +37,23 @@ $options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'
                 <input type="radio" name="type" value="2" <?=($topic['type']==2)?'checked':'';?>>複選
             </div>
             <hr>
-            <?php 
-            foreach($options as $opt){
-?>
+             
+            
           
             <div class="options">
+            <?php
+            foreach($options as $opt){
+                ?>
                 <div>
                     <label for="description">選項</label>
                     <input type=text name=description[] class="description-input" value="<?=$opt['description'];?>">
-                    <spna onclick='addOption()'>+</spna>
-                    <spna onclick='removeOption(this)'>-</spna>
+                    <span onclick='addOption()'>+</span>
+                    <span onclick='removeOption(this)'>-</span>
+                    <!-- 使用opt_id[]做出記號，以便區隔新增的和原有的 -->
+                    <input type="hidden" name="opt_id[]" value="<?=$opt['id'];?>">
                 </div>
                 <!-- 將opitons id 隱藏送出 -->
-                <input type="hidden" name="opt_id[]" value="<?=$opt['id'];?>">
+                
 <?php  }?>
             </div>
             <div>

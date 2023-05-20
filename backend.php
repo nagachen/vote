@@ -15,15 +15,47 @@
         <a href="index.php">首頁</a>
         <a href="login.php">登出</a>
         <nav>
-            <a href='./back/add_vote.php'>新增投票</a>
+            <a href='./backend.php?do=add_vote'>新增投票</a>
 
-            <a href='./back/query_vote.php'>結果查詢</a>
+            <a href='./backend.php?do=query_vote'>結果查詢</a>
         </nav>
     </header>
     <main>
         
-    <?php    
-    include "./back/topiclist.php" 
+    <?php
+    //使用三元運算式 切換所要去的網頁
+    //$file=(isset($_GET['do']))? "./back/".$_GET['do']:"./back/topiclist";
+    //或
+    // $do=(isset($_GET['do']))?$_GET['do']:'topiclist';
+    // 可以改成
+    $do=$_GET['do']??'topiclist.php';
+
+    $file='./back/'.$do.".php";
+    include (file_exists($file))?$file:'./back/topiclist.php';
+    // //使用if else 切換所要去的網頁
+    // if(isset($_GET['do'])){
+    //     $file= "./back/".$_GET['do'].".php";
+    // }else{
+    //     $file= "./back/topiclist.php";
+    // }
+    // if(file_exists($file)){
+    //     include $file;
+    // }else{
+    //     include "./back/topiclist.php";
+    // }
+    
+    // //使用swtich 切換所要去的網頁
+    // switch($_GET['do']){
+    //     case 'add_vote.php':
+    //         include "./back/add_vote.php";
+    //         break;
+    //     case 'query_vote.php':
+    //         include "./back/query_vote.php";
+    //         break;
+    //     default:
+    //         include "./back/topiclist.php";
+    // }    
+     
     ?>
     </main>
     <footer></footer>

@@ -1,3 +1,5 @@
+
+<?php include_once "./db.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,26 +11,17 @@
 <body>
 <header>
     <a href="index.php">首頁</a>
-    <a href="./front/result.php">結果</a>
-    <a href="./front/login.php">登入</a>
-    <a href="./front/reg.php">註冊</a>
+    <a href="./?do=result">結果</a>
+    <a href="./?do=login">登入</a>
+    <a href="./?do=reg">註冊</a>
 </header>
 <main>
-<ul>
-    <?php
-    //資料庫連線
-    include_once "./db.php";
-
-    $sql="select * from `topics`";
-    $rows=$pdo->query($sql)->fetchAll();
-    foreach($rows as $row){
- ?>
-    <li><?=$row['subject'];?></li>
-
-<?php
- }
- ?>
-</ul>
+<?php 
+// include "./front/list.php";
+$do=$_GET['do']??'list';
+$file='./front/'.$do.'.php';
+include (file_exists($file))?$file:'./front/list.php'
+?>
 </main>
 <footer></footer>
 </body>

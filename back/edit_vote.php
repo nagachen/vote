@@ -48,10 +48,13 @@ $options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'
                     <spna onclick='addOption()'>+</spna>
                     <spna onclick='removeOption(this)'>-</spna>
                 </div>
+                <!-- 將opitons id 隱藏送出 -->
                 <input type="hidden" name="opt_id[]" value="<?=$opt['id'];?>">
 <?php  }?>
             </div>
             <div>
+                <!-- 將subject id 隱藏送出 -->
+            <input type="hidden" name="subject_id" value="<?=$topic['id'];?>">
                 <input type="submit" value="編輯">
 
             </div>

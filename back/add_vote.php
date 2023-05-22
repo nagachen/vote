@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新增主題</title>
     <link rel="stylesheet" href="../css/style.css">
-    <script src=".././js/jquery-3.7.0.min.js"></script>
+    <script src="./js/jquery-3.7.0.min.js"></script>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
         <?php
 
         ?>
-        <form action="../api/add_vote.php" method="post">
+        <form action="./api/add_vote.php" method="post">
             <div><label for="subject">主題說明:</label><input type="text" name="subject" id="subject" class="subject-input"></div>
             <div class="time-set">
                 <div class="time-item">
@@ -37,8 +37,8 @@
                 <div>
                     <label for="description">選項</label>
                     <input type=text name=description[] class="description-input">
-                    <spna onclick='addOption()'>+</spna>
-                    <spna onclick='removeOption(this)'>-</spna>
+                    <span onclick='addOption()'>+</span>
+                    <span onclick='removeOption(this)'>-</span>
                 </div>
                 <div>
                     <label for="description">選項</label>

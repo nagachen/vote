@@ -12,7 +12,7 @@ $chk=$pdo->query($chk_sql)->fetchColumn();
 // echo "<pre>";
 if($chk>0){
     echo "此主題已被使用過,請修改主題內容";
-    echo "<a href='../back/add_vote.php'>返回新增主題</a>";
+    echo "<a href='../backend.php?do=add_vote'>返回新增主題</a>";
 }else{
     //寫入
     $sql="insert into `topics`(`subject`,`open_time`,`close_time`,`type`)
@@ -27,7 +27,7 @@ if(!empty($_POST['description'])){
         $desc_sql="INSERT INTO `options`( `description`, `subject_id`) 
                    VALUES ('$desc','$subject_id')";
         $pdo->exec($desc_sql);
-        header("location:../back/add_vote.php");
+        header("location:../backend.php");
     }
 }
 }
